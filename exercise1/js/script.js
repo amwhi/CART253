@@ -15,6 +15,11 @@ let squareX;
 let squareY;
 let squareSize = 100;
 
+// The current position and size of the image
+let img;
+let imageX;
+let imageY;
+let imageSize = 100;
 
 // preload()
 //
@@ -26,12 +31,14 @@ function preload() {
 
 
 // setup()
-//
+//img = loadImage('assets/laDefense.jpg');
 // Set up the canvas, position the images, set the image mode.
 
 function setup() {
   // Create our canvas
   createCanvas(640,640);
+  img = loadImage('exercise1/assets/images/BALL.png');
+  imageMode(CENTER)
 
   // Start the circle off screen to the bottom left
   // We divide the size by two because we're drawing from the center
@@ -47,6 +54,11 @@ function setup() {
   rectMode(CENTER);
   // We won't have a stroke in this
   noStroke();
+
+  //Adding marble images
+  imageX = -imageSize/2;
+  imageY = height/2;
+
 }
 
 
@@ -73,4 +85,12 @@ function draw() {
   fill(0,0,255,10);
   // Display the square
   rect(squareX,squareY,squareSize,squareSize);
+
+
+
+  //Display the image
+  image(img, imageX, imageY, imageSize);
+
+  //Move image from left to right of screen
+  imageX += 2
 }
