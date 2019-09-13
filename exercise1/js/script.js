@@ -130,7 +130,7 @@ function draw() {
 //  imageY2 += 3;
 
 // have donut get bigger and smaller according to sin angle
-imageSize2 (sin(angle)*imageSize);
-angle =+ 0.01;
+  imageSize2 (sin(angle)*imageSize);
+  angle =+ 0.01;
 
 }
