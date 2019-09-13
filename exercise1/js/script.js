@@ -27,6 +27,13 @@ let imageX1;
 let imageY1;
 let imageSize1 = 50;
 
+//The current position and size of the donut imageX
+let img2;
+let imageX2;
+let imageY2;
+let imageSize2 = 75;
+
+
 // preload()
 //
 // Nothing here
@@ -42,9 +49,10 @@ function preload() {
 function setup() {
   // Create our canvas
   createCanvas(640,640);
-  //Loading images (BALL, flower, )
+  //Loading images (BALL, flower, donut )
   img = loadImage('exercise1/assets/images/BALL.png');
-  img1 = loadImage('exercise1/assets/image/flower.png');
+  img1 = loadImage('exercise1/assets/images/flower.png');
+  img2 = loadImage('exercise/assets/images/donut.png');
   imageMode(CENTER);
 
 
@@ -71,6 +79,11 @@ function setup() {
   imageX1 = mouseX;
   imageY1 = mouseY;
 
+//Adding donut image
+
+  imageX2 = 500;
+  imageY2 = -imageSize/2;
+
 }
 
 
@@ -86,7 +99,7 @@ function draw() {
   circleX += 1;
   circleY -= 1;
   // Make the circle transparent red
-  fill(255,0,0,10);
+  fill(100,255,30,10);
   // Display the circle
   ellipse(circleX,circleY,circleSize,circleSize);
 
@@ -94,7 +107,7 @@ function draw() {
   squareX -= 1;
   squareY -= 1;
   // Make the square transparent blue
-  fill(0,0,255,10);
+  fill(150,50,210,10);
   // Display the square
   rect(squareX,squareY,squareSize,squareSize);
 
@@ -103,9 +116,15 @@ function draw() {
   //Display the BAlL image
   image(img, imageX, imageY, imageSize);
 
-  //Move image from left to right of screen
+  //Move BALL image from left to right of screen
   imageX += 2;
 
   //Display flower image
   image(img1, imageX1, imageY1, imageSize1);
+
+  //Display donut imageX
+  image(img2, imageX2, imageY2, imageSize2);
+
+  //Move donut image from top to bottom;
+  imageY2 += 3;
 }
