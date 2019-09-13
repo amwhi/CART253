@@ -33,6 +33,7 @@ let imageX2;
 let imageY2;
 let imageSize2 = 75;
 
+let angle = 0
 
 // preload()
 //
@@ -82,7 +83,7 @@ function setup() {
 //Adding donut image
 
   imageX2 = 500;
-  imageY2 = -imageSize/2;
+  imageY2 = height/2;
 
 }
 
@@ -126,5 +127,10 @@ function draw() {
   image(img2, imageX2, imageY2, imageSize2);
 
   //Move donut image from top to bottom;
-  imageY2 += 3;
+//  imageY2 += 3;
+
+// have donut get bigger and smaller according to sin angle
+imageSize2 (sin(angle)*imageSize);
+angle =+ 0.01;
+
 }
