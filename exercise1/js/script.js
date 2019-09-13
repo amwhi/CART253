@@ -15,11 +15,17 @@ let squareX;
 let squareY;
 let squareSize = 100;
 
-// The current position and size of the image
+// The current position and size of the BALL image
 let img;
 let imageX;
 let imageY;
 let imageSize = 100;
+
+// The current position and size of the flower image
+let img1;
+let imageX1;
+let imageY1;
+let imageSize1 = 50;
 
 // preload()
 //
@@ -29,7 +35,6 @@ function preload() {
 
 }
 
-
 // setup()
 //img = loadImage('assets/laDefense.jpg');
 // Set up the canvas, position the images, set the image mode.
@@ -37,8 +42,11 @@ function preload() {
 function setup() {
   // Create our canvas
   createCanvas(640,640);
+  //Loading images (BALL, flower, )
   img = loadImage('exercise1/assets/images/BALL.png');
-  imageMode(CENTER)
+  img1 = loadImage('exercise1/assets/image/flower.png');
+  imageMode(CENTER);
+
 
   // Start the circle off screen to the bottom left
   // We divide the size by two because we're drawing from the center
@@ -55,9 +63,13 @@ function setup() {
   // We won't have a stroke in this
   noStroke();
 
-  //Adding marble images
+  //Adding BALL image
   imageX = -imageSize/2;
   imageY = height/2;
+
+//Adding flower image to stay on mouse
+  imageX1 = mouseX;
+  imageY1 = mouseY;
 
 }
 
@@ -88,9 +100,12 @@ function draw() {
 
 
 
-  //Display the image
+  //Display the BAlL image
   image(img, imageX, imageY, imageSize);
 
   //Move image from left to right of screen
-  imageX += 2
+  imageX += 2;
+
+  //Display flower image
+  image(img1, imageX1, imageY1, imageSize1);
 }
