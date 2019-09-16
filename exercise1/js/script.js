@@ -19,21 +19,21 @@ let squareSize = 100;
 let img;
 let imageX;
 let imageY;
-let imageSize = 100;
+let imageSize = 200;
 
 // The current position and size of the flower image
 let img1;
 let imageX1;
 let imageY1;
-let imageSize1 = 50;
+let imageSize1 = 75;
 
 //The current position and size of the donut imageX
 let img2;
 let imageX2;
 let imageY2;
-let imageSize2 = 75;
+let imageSize2 = 150;
 
-let angle = 0
+let angle = 0.0
 
 // preload()
 //
@@ -51,9 +51,9 @@ function setup() {
   // Create our canvas
   createCanvas(640,640);
   //Loading images (BALL, flower, donut )
-  img = loadImage('exercise1/assets/images/BALL.png');
-  img1 = loadImage('exercise1/assets/images/flower.png');
-  img2 = loadImage('exercise/assets/images/donut.png');
+  img = loadImage('../exercise1/assets/images/BALL.png');
+  img1 = loadImage('../exercise1/assets/images/flower.png');
+  img2 = loadImage('../exercise1/assets/images/donut.png');
   imageMode(CENTER);
 
 
@@ -76,14 +76,12 @@ function setup() {
   imageX = -imageSize/2;
   imageY = height/2;
 
-//Adding flower image to stay on mouse
-  imageX1 = mouseX;
-  imageY1 = mouseY;
+
 
 //Adding donut image
 
   imageX2 = 500;
-  imageY2 = height/2;
+  imageY2 = -imageSize2;
 
 }
 
@@ -95,7 +93,7 @@ function setup() {
 
 function draw() {
   // We don't fill the background so we get a drawing effect
-
+background(255);
   // Move circle up and to the right
   circleX += 1;
   circleY -= 1;
@@ -112,25 +110,31 @@ function draw() {
   // Display the square
   rect(squareX,squareY,squareSize,squareSize);
 
-
+  //Adding flower image to stay on mouse
+  imageX1 = mouseX;
+  imageY1 = mouseY;
 
   //Display the BAlL image
-  image(img, imageX, imageY, imageSize);
+  image(img, imageX, imageY, imageSize, imageSize);
 
   //Move BALL image from left to right of screen
   imageX += 2;
 
+
+
   //Display flower image
-  image(img1, imageX1, imageY1, imageSize1);
+  image(img1, imageX1, imageY1, imageSize1, imageSize1);
 
   //Display donut imageX
-  image(img2, imageX2, imageY2, imageSize2);
+  image(img2, imageX2, imageY2, imageSize2, imageSize2);
 
   //Move donut image from top to bottom;
-//  imageY2 += 3;
+  imageY2 += 3;
 
+  //background(255);
+//
 // have donut get bigger and smaller according to sin angle
-  imageSize2 (sin(angle)*imageSize);
-  angle =+ 0.01;
+//  imageSize2 (sin(angle)*imageSize);
+//  angle =+ 0.01;
 
 }
