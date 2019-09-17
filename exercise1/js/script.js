@@ -110,9 +110,15 @@ background(255);
   // Display the square
   rect(squareX,squareY,squareSize,squareSize);
 
-  //Adding flower image to stay on mouse
-  imageX1 = mouseX;
-  imageY1 = mouseY;
+  //Adding flower image to stay on mouse only when presses
+  if (mouseIsPressed) {
+    imageX1 = mouseX;
+    imageY1 = mouseY;
+ } else {
+   imageX1 = -50;
+   imageY1 = -50;
+ }
+
 
   //Display the BAlL image
   image(img, imageX, imageY, imageSize, imageSize);
