@@ -21,6 +21,7 @@ let imageX;
 let imageY;
 let imageSize = 200;
 
+
 // The current position and size of the flower image
 let img1;
 let imageX1;
@@ -33,7 +34,7 @@ let imageX2;
 let imageY2;
 let imageSize2 = 150;
 
-let angle = 0.0
+let angle = 0.0;
 
 // preload()
 //
@@ -49,13 +50,13 @@ function preload() {
 
 function setup() {
   // Create our canvas
-  createCanvas(640,640);
+  createCanvas(600,600);
   //Loading images (BALL, flower, donut )
   img = loadImage('../exercise1/assets/images/BALL.png');
   img1 = loadImage('../exercise1/assets/images/flower.png');
   img2 = loadImage('../exercise1/assets/images/donut.png');
-  imageMode(CENTER);
 
+  imageMode(CENTER);
 
   // Start the circle off screen to the bottom left
   // We divide the size by two because we're drawing from the center
@@ -76,11 +77,8 @@ function setup() {
   imageX = -imageSize/2;
   imageY = height/2;
 
-
-
-//Adding donut image
-
-  imageX2 = 500;
+  //Adding donut image
+  imageX2 = 400;
   imageY2 = -imageSize2;
 
 }
@@ -92,13 +90,14 @@ function setup() {
 // Draw the circle and square on screen
 
 function draw() {
-  // We don't fill the background so we get a drawing effect
-background(255);
+
+background(182, 255, 242);
+
   // Move circle up and to the right
   circleX += 1;
   circleY -= 1;
   // Make the circle transparent red
-  fill(100,255,30,10);
+  fill(100,255,30,60);
   // Display the circle
   ellipse(circleX,circleY,circleSize,circleSize);
 
@@ -106,19 +105,22 @@ background(255);
   squareX -= 1;
   squareY -= 1;
   // Make the square transparent blue
-  fill(150,50,210,10);
+  fill(150,50,210,70);
   // Display the square
   rect(squareX,squareY,squareSize,squareSize);
+
 
   //Adding flower image to stay on mouse only when presses
   if (mouseIsPressed) {
     imageX1 = mouseX;
     imageY1 = mouseY;
- } else {
-   imageX1 = -50;
-   imageY1 = -50;
+  } else if (mouseX >= 600 || mouseY >= 600) {
+    imageX1 = random(0,500);
+    imageY1 = random(0,500);
+ } else if (mouseX <= 0 || mouseY <= 0) {
+   imageX1 = random(0,500);
+   imageY1 = random(0,500);
  }
-
 
   //Display the BAlL image
   image(img, imageX, imageY, imageSize, imageSize);
@@ -126,8 +128,16 @@ background(255);
   //Move BALL image from left to right of screen
   imageX += 2;
 
+/*ball moves back right once it hits the edge
+if (imageX > imageSize + width){
+  imageX -= 2;
+} else if (imageX < 0 + imageSize){
+  imageX += 2;
+} else {
+  imageX += 2;
+}
 
-
+*/
   //Display flower image
   image(img1, imageX1, imageY1, imageSize1, imageSize1);
 
@@ -135,10 +145,16 @@ background(255);
   image(img2, imageX2, imageY2, imageSize2, imageSize2);
 
   //Move donut image from top to bottom;
-  imageY2 += 3;
+  imageY2 += 2;
 
-  //background(255);
-//
+  //The donut reappears at the top
+   if (imageY2 > imageSize2 + height){
+     imageY2 = -(imageSize2/2);
+    }
+    //else {
+  //    imageY2 += 2;}
+
+
 // have donut get bigger and smaller according to sin angle
 //  imageSize2 (sin(angle)*imageSize);
 //  angle =+ 0.01;
