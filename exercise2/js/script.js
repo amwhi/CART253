@@ -26,8 +26,21 @@ let enemySize = 50;
 let enemySpeed = 5;
 let enemyVX = 5;
 
+      //Define images for player and enemy
+      let avatarImage;
+      let enemyImage;
+
+
+
 // How many dodges the player has made
 let dodges = 0;
+
+function preload() {
+
+      //Loading enemy and avatar images
+      enemyImage = loadImage('../exercise2/assets/images/PACMAN.png');
+      avatarImage = loadImage('../exercise2/assets/images/MOUSE.png');
+}
 
 // setup()
 //
@@ -54,7 +67,8 @@ function setup() {
 // game over situations.
 function draw() {
   // A pink background
-  background(255,220,220);
+  background(138, 249, 230);
+
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
@@ -151,14 +165,11 @@ function draw() {
         textFont('Georgia');
         text(dodges,450,25,30,30);
 
-  // The player is black
-  fill(0);
-  // Draw the player as a circle
-  ellipse(avatarX,avatarY,avatarSize,avatarSize);
 
-  // The enemy is red
-  fill(255,0,0);
-  // Draw the enemy as a circle
-  ellipse(enemyX,enemyY,enemySize,enemySize);
+        // Draw the player as a mouse
+        image(avatarImage,avatarX,avatarY,avatarSize,avatarSize);
+
+        // Draw the enemy as a pacman
+        image(enemyImage,enemyX,enemyY,enemySize,enemySize);
 
 }
