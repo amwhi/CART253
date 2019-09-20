@@ -63,6 +63,8 @@ function draw() {
   // Check which keys are down and set the avatar's velocity based on its
   // speed appropriately
 
+
+
   // Left and right
   if (keyIsDown(LEFT_ARROW)) {
     avatarVX = -avatarSpeed;
@@ -85,7 +87,7 @@ function draw() {
   avatarY = avatarY + avatarVY;
 
   // The enemy always moves at enemySpeed
-  enemyVX = enemySpeed;
+
   // Update the enemy's position based on its velocity
   enemyX = enemyX + enemyVX;
 
@@ -98,6 +100,11 @@ function draw() {
     // Reset the enemy's position
     enemyX = 0;
     enemyY = random(0,height);
+
+        //Reset enemy's speed + size
+        enemyVX = 5;
+        enemySpeed = 5;
+        enemySize = 50;
     // Reset the avatar's position
     avatarX = width/2;
     avatarY = height/2;
@@ -111,6 +118,10 @@ function draw() {
     console.log("YOU LOSE!");
     enemyX = 0;
     enemyY = random(0,height);
+        //Reset enemy's speed + size
+        enemyVX = 5;
+        enemySize = 50;
+        enemySpeed = 5;
     avatarX = width/2;
     avatarY = height/2;
     dodges = 0;
@@ -125,14 +136,20 @@ function draw() {
     // Reset the enemy's position to the left at a random height
     enemyX = 0;
     enemyY = random(0,height);
+
+        // The enemy increases speed and size after each dodge
+        enemyVX = enemySpeed;
+        enemySpeed = enemySpeed + 3;
+        enemySize = enemySize + 10;
+
   }
 
-//Display the number of successful dodges in the top right hand corner
-  fill(0);
-  textSize(30);
-  textAlign(450,450);
-  textFont('Georgia');
-  text(dodges,450,25,30,30);
+        //Display the number of successful dodges in the top right hand corner
+        fill(0);
+        textSize(30);
+        textAlign(450,450);
+        textFont('Georgia');
+        text(dodges,450,25,30,30);
 
   // The player is black
   fill(0);
