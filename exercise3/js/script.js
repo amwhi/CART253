@@ -114,13 +114,24 @@ function setup() {
   image(targetImage,targetX,targetY);
 
 
-  //Displaying a yellow box
+  //Displaying a yellow box with curved corners, outlined in black
   fill("#ffff00");
   stroke(0);
   strokeWeight(5);
-  rect(windowWidth-200,10,170,100,20);
+  rect(windowWidth-200,10,170,130,20);
+  //adding a line to split bottom of box for text
+  stroke(0);
+  strokeWeight(5);
+  line((windowWidth-200),100,(windowWidth-30) ,100);
+  //Displaying text to find Dog
+  textSize (20);
+  strokeWeight(3);
+  text('CHIEN PERDU', windowWidth-185, 125);
+
   //Displaying target image in top right corner
-  image(targetImage,windowWidth-110,60);
+  image(targetImage,windowWidth-110,55);
+
+
 }
 
 
