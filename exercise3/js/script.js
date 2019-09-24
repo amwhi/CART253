@@ -112,6 +112,15 @@ function setup() {
 
   // And draw it (because it's the last thing drawn, it will always be on top)
   image(targetImage,targetX,targetY);
+
+
+  //Displaying a yellow box
+  fill("#ffff00");
+  stroke(0);
+  strokeWeight(5);
+  rect(windowWidth-200,10,170,100,20);
+  //Displaying target image in top right corner
+  image(targetImage,windowWidth-110,60);
 }
 
 
@@ -123,13 +132,15 @@ function draw() {
   if (gameOver) {
     // Prepare our typography
     textFont("Helvetica");
-    textSize(128);
+      //changed the text to be 10th the size of the window
+      textSize(windowWidth/10);
     textAlign(CENTER,CENTER);
     noStroke();
     fill(random(255));
 
     // Tell them they won!
     text("YOU WINNED!",width/2,height/2);
+
 
     // Draw a circle around the sausage dog to show where it is (even though
     // they already know because they found it!)
