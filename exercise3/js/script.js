@@ -36,6 +36,9 @@ let numDecoys = 100;
 // Keep track of whether they've won
 let gameOver = false;
 
+//Define imageX + imageY
+let imageX = 0.0
+let imageY = 0.1
 // preload()
 //
 // Loads the target and decoy images before the program starts
@@ -159,6 +162,15 @@ function draw() {
     stroke(random(255));
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
+
+    //have dog move around the screen
+    imageX = imageX + 0.04;
+    imageY = imageY + 0.03;
+    let nX = noise(imageX) * width;
+    let nY = noise(imageY) * width;
+    image(targetImage,nX,nY);
+
+
   }
 }
 
