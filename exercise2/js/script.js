@@ -30,7 +30,10 @@ let enemyVX = 5;
       let avatarImage;
       let enemyImage;
 
-
+      //Defined variables for when the enemy starts at the left or right side of screen
+      let left = 0;
+      let right = 500 + avatarSize;
+      let sides = [left, right];
 
 // How many dodges the player has made
 let dodges = 0;
@@ -66,9 +69,6 @@ function setup() {
 // Handle moving the avatar and enemy and checking for dodges and
 // game over situations.
 function draw() {
-  // A pink background
-  background(138, 249, 230);
-
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
@@ -112,18 +112,23 @@ function draw() {
     // Tell the player they lost
     console.log("YOU LOSE!");
     // Reset the enemy's position
-    enemyX = 0;
+    enemyX = random(-enemySize || 500 + enemySize);
     enemyY = random(0,height);
 
         //Reset enemy's speed + size
         enemyVX = 5;
         enemySpeed = 5;
         enemySize = 50;
+        //Reset avatar's size
+        avatarSize = 50;
     // Reset the avatar's position
     avatarX = width/2;
     avatarY = height/2;
     // Reset the dodge counter
     dodges = 0;
+    //Reset Background
+    background (255);
+
   }
 
   // Check if the avatar has gone off the screen (cheating!)
@@ -139,6 +144,11 @@ function draw() {
     avatarX = width/2;
     avatarY = height/2;
     dodges = 0;
+
+        //Reset avatar's size
+        avatarSize = 50;
+        //Reset Background
+        background(255);
   }
 
   // Check if the enemy has moved all the way across the screen
@@ -153,8 +163,11 @@ function draw() {
 
         // The enemy increases speed and size after each dodge
         enemyVX = enemySpeed;
-        enemySpeed = enemySpeed + 3;
-        enemySize = enemySize + 10;
+        enemySpeed = enemySpeed + 2;
+        enemySize = enemySize + 5;
+
+        //Changing avatar's size
+        avatarSize = avatarSize - 2;
 
   }
 
