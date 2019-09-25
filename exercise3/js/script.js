@@ -39,6 +39,13 @@ let gameOver = false;
 //Define imageX + imageY
 let imageX = 0.0
 let imageY = 0.1
+
+    //Define positions & speed for moving doggo
+    let positionX;
+    let xSpeed;
+    let positionY;
+    let ySpeed;
+
 // preload()
 //
 // Loads the target and decoy images before the program starts
@@ -117,23 +124,28 @@ function setup() {
   image(targetImage,targetX,targetY);
 
 
-  //Displaying a yellow box with curved corners, outlined in black
-  fill("#ffff00");
-  stroke(0);
-  strokeWeight(5);
-  rect(windowWidth-200,10,170,130,20);
-  //adding a line to split bottom of box for text
-  stroke(0);
-  strokeWeight(5);
-  line((windowWidth-200),100,(windowWidth-30) ,100);
-  //Displaying text to find Dog
-  textSize (20);
-  strokeWeight(3);
-  text('CHIEN PERDU', windowWidth-185, 125);
+    //Displaying a yellow box with curved corners, outlined in black - top right corner
+    fill("#ffff00");
+    stroke(0);
+    strokeWeight(5);
+    rect(windowWidth-200,10,170,130,20);
+    //adding a line to split bottom of box for text
+    stroke(0);
+    strokeWeight(5);
+    line((windowWidth-200),100,(windowWidth-30) ,100);
+    //Displaying text to find Dog
+    textSize (20);
+    strokeWeight(3);
+    text('CHIEN PERDU', windowWidth-185, 125);
+    //Displaying target image in top right corner, inside box
+    image(targetImage,windowWidth-110,55);
 
-  //Displaying target image in top right corner
-  image(targetImage,windowWidth-110,55);
-
+    //position bouncing dog where the found dog would be
+    positionX = targetX;
+    positionY = targetY;
+    //set bounding dog's Speed
+    xSpeed = 5;
+    ySpeed = 7;
 
 }
 
@@ -163,12 +175,24 @@ function draw() {
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
 
-    //have dog move around the screen
-    imageX = imageX + 0.04;
-    imageY = imageY + 0.03;
-    let nX = noise(imageX) * width;
-    let nY = noise(imageY) * width;
-    image(targetImage,nX,nY);
+
+      //have dog bounce off sides of window
+      image(targetImage,positionX,positionY);
+      // When the doggo passes either side of the canvas , it turns around
+      // add padding so it hits the edge of doggo
+      if(positionX + 70 > width || positionX - 50 < 0) {
+      xSpeed = xSpeed * -1;
+      //positionX = positionX - xSpeed;
+      }
+
+      if(positionY + 30 > height || positionY - 30 < 0) {
+      ySpeed = ySpeed * -1;
+      //positionY = positionY - ySpeed;
+      // positionX = positionX + xSpeed;
+      }
+      // We always need to be moving
+      positionX = positionX + xSpeed;
+      positionY = positionY - ySpeed;
 
 
   }
