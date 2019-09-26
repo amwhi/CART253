@@ -177,6 +177,10 @@ function draw() {
 
 
       //have dog bounce off sides of window
+
+      //scale dog based on mouse X position
+      scale(mouseX / 900);
+
       image(targetImage,positionX,positionY);
       // When the doggo passes either side of the canvas , it turns around
       // add padding so it hits the edge of doggo
