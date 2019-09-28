@@ -197,13 +197,15 @@ function draw() {
 
       if(positionY + 30 > height || positionY - 30 < 0) {
       ySpeed = ySpeed * -1;
-      //positionY = positionY - ySpeed;
+      // positionY = positionY - ySpeed;
       // positionX = positionX + xSpeed;
       }
       // We always need to be moving
       positionX = positionX + xSpeed;
       positionY = positionY - ySpeed;
 
+      //Increase the amount of decoys with each win
+      numDecoys = numDecoys + 50;
 
   }
 }
